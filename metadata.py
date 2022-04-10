@@ -14,12 +14,12 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
 # Base metadata. MUST BE EDITED.
-BASE_IMAGE_URL = "ipfs://<-- Your CID Code-->"
-BASE_NAME = ""
+BASE_IMAGE_URL = "ipfs://Qman4hceizFeQepQL4asoNJEtNvusvFdZZWc8qgZ8zWqAq"
+BASE_NAME = "squirrels"
 
 BASE_JSON = {
     "name": BASE_NAME,
-    "description": "",
+    "description": "Big blana",
     "image": BASE_IMAGE_URL,
     "attributes": [],
 }
@@ -27,9 +27,9 @@ BASE_JSON = {
 
 # Get metadata and JSON files path based on edition
 def generate_paths(edition_name):
-    edition_path = os.path.join('output', 'edition ' + str(edition_name))
-    metadata_path = os.path.join(edition_path, 'metadata.csv')
-    json_path = os.path.join(edition_path, 'json')
+    edition_path = os.path.join('output', 'images_' + str(edition_name))
+    metadata_path = os.path.join('output', 'metadata_' + str(edition_name) +'.csv')
+    json_path = os.path.join('output', 'json_' + str(edition_name))
 
     return edition_path, metadata_path, json_path
 
@@ -70,6 +70,16 @@ def main():
         edition_name = input()
         edition_path, metadata_path, json_path = generate_paths(edition_name)
 
+
+        cid_path = os.path.join('output', "cid_" + edition_name + ".txt")
+        f = open(cid_path, "r")
+        base_img_cid = f.read()
+        print("Base image folder IPFS CID is " + base_img_cid)
+
+        BASE_JSON["image"] = "ipfs://" + base_img_cid
+
+        print(BASE_JSON)   
+
         if os.path.exists(edition_path):
             print("Edition exists! Generating JSON metadata...")
             break
@@ -109,6 +119,7 @@ def main():
         item_json_path = os.path.join(json_path, str(idx))
         with open(item_json_path, 'w') as f:
             json.dump(item_json, f)
+
 
 # Run the main function
 main()
