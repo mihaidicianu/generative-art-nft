@@ -1,0 +1,25 @@
+{
+  "name": "generative-art-nft.git",
+  "version": "1.0.0",
+  "description": "## Introduction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihaidicianu/generative-art-nft.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mihaidicianu/generative-art-nft/issues"
+  },
+  "homepage": "https://github.com/mihaidicianu/generative-art-nft#readme",
+  "dependencies": {
+    "@pinata/sdk": "^1.1.24",
+    "dotenv": "^16.0.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
